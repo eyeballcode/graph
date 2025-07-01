@@ -10,8 +10,8 @@ describe('The vertex class', () => {
     vertexA.addEdge(vertexB, { weight: 10 })
 
     expect(vertexA.getOutgoingEdges().length).to.equal(1)
-    expect(vertexA.getOutgoingEdges()[0].target).to.equal(vertexB)
-    expect(vertexA.getOutgoingEdges()[0].weight).to.equal(10)
+    expect(vertexA.getOutgoingEdges()[0].getDest()).to.equal(vertexB)
+    expect(vertexA.getOutgoingEdges()[0].getWeight()).to.equal(10)
     expect(vertexB.getOutgoingEdges().length).to.equal(0)
   })
 
