@@ -9,7 +9,7 @@ function isHeapShaped(array, size) {
   return true
 }
 
-describe('The min heap class', () => {
+describe('The max heap class', () => {
   beforeEach(function() {
     this.values = [21, 17, 4, 15, 12, 2, 3, 9, 13, 8, 11, 1]
     this.heap = new MaxHeap()
@@ -67,7 +67,7 @@ describe('The min heap class', () => {
   })
 
   it('Should return the largest number each time', function() {
-    let values = this.values.toSorted((a, b) => a - b).reverse()
+    let values = this.values.toSorted((a, b) => b - a)
 
     for (let i = 0; i < values.length; i++) {
       expect(isHeapShaped(this.heap._array, values.length - i)).to.be.true
