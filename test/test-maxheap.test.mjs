@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import MinHeap from '../lib/MinHeap.mjs'
+import MaxHeap from '../lib/MaxHeap.mjs'
 
 function isHeapShaped(array, size) {
   for (let i = 2; i < size + 1; i++) {
@@ -11,7 +11,7 @@ function isHeapShaped(array, size) {
 describe('The min heap class', () => {
   beforeEach(function() {
     this.values = [21, 17, 4, 15, 12, 2, 3, 9, 13, 8, 11, 1]
-    this.heap = new MinHeap()
+    this.heap = new MaxHeap()
     for (let i = 0; i < this.values.length; i++) {
       this.heap.__getArray()[i + 1] = this.values[i]
     }
