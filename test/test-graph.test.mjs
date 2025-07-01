@@ -21,7 +21,8 @@ describe('The graph class', () => {
 
   it('Allows adding an edge directly without having to get the vertex', () => {
     let graph = new Graph()
-    graph.add(new Vertex('A'), new Vertex('B'))
+    graph.add(new Vertex('A'))
+    graph.add(new Vertex('B'))
     graph.addEdge('A', 'B', { weight: 5, attrs: { name: 'test' }})
     expect(graph.get('A').getOutgoingEdges().length).to.equal(1)
     expect(graph.get('A').getOutgoingEdges()[0].getDest()).to.equal(graph.get('B'))
