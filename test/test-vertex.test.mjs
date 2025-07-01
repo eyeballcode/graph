@@ -24,9 +24,20 @@ describe('The vertex class', () => {
     expect(vertexA.getOutgoingEdges().length).to.equal(1)
     expect(vertexA.getOutgoingEdges()[0].getDest()).to.equal(vertexB)
     expect(vertexA.getOutgoingEdges()[0].getWeight()).to.equal(10)
-    
+
     expect(vertexB.getOutgoingEdges().length).to.equal(1)
     expect(vertexB.getOutgoingEdges()[0].getDest()).to.equal(vertexA)
     expect(vertexB.getOutgoingEdges()[0].getWeight()).to.equal(10)
+  })
+
+  it('Allows adding attributes to an edge', () => {
+    let vertexA = new Vertex('A')
+    let vertexB = new Vertex('B')
+
+    vertexA.addEdge(vertexB, { weight: 10, attrs: { name: 'Highway' } })
+
+    expect(vertexA.getOutgoingEdges().length).to.equal(1)
+    expect(vertexA.getOutgoingEdges()[0].getDest()).to.equal(vertexB)
+    expect(vertexA.getOutgoingEdges()[0].getAttr('name')).to.equal('Highway')
   })
 })
