@@ -32,9 +32,9 @@ describe('The min heap class', () => {
 
     while (heap.getSize() > 1) {
       expect(isHeapShaped(heap.__getArray(), heap.getSize())).to.be.true
-      expect(heap.__getArray().toSorted().slice(1, heap.getSize() + 1)).to.deep.equal(values)
+      expect(heap.__getArray().slice(1, heap.getSize() + 1).toSorted()).to.deep.equal(values)
 
-      heap.__getArray()[0] = heap.__getArray()[heap.getSize()]
+      heap.__getArray()[1] = heap.__getArray()[heap.getSize()]
       values = heap.__getArray().slice(1, heap.getSize()).toSorted()
       heap.__setSize(heap.getSize() - 1)
       heap.sink(1)
