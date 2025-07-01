@@ -65,4 +65,15 @@ describe('The min heap class', () => {
       heap.add(numbers[i])
     }
   })
+
+  it('Should return the largest number each time', function() {
+    let values = this.values.toSorted((a, b) => a - b).reverse()
+
+    for (let i = 0; i < values.length; i++) {
+      expect(isHeapShaped(this.heap.__getArray(), values.length - i)).to.be.true
+
+      let value = this.heap.get()
+      expect(value).to.equal(values[i])
+    }
+  })
 })
