@@ -18,7 +18,7 @@ describe('The min heap class', () => {
     this.heap.__setSize(this.values.length)
   })
 
-  it('Returns the largest child of a parent node', () => {
+  it('Returns the largest child of a parent node', function() {
     let heap = this.heap
     for (let i = 2; i < heap.getSize(); i++) {
       let largestChild = heap.largestChild(Math.floor(i / 2))
@@ -26,7 +26,7 @@ describe('The min heap class', () => {
     }
   })
 
-  it('Should sink values into place maintaining the heap invariant', () => {
+  it('Should sink values into place maintaining the heap invariant', function() {
     let heap = this.heap
     let values = this.values.toSorted()
 
