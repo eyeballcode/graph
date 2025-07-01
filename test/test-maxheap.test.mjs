@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import MaxHeap from '../lib/MaxHeap.mjs'
+import MaxHeap from '../lib/heap/MaxHeap.mjs'
 
 function isHeapShaped(array, size) {
   if (array.length < size) return false
@@ -14,7 +14,7 @@ describe('The min heap class', () => {
     this.values = [21, 17, 4, 15, 12, 2, 3, 9, 13, 8, 11, 1]
     this.heap = new MaxHeap()
     for (let i = 0; i < this.values.length; i++) {
-      this.heap.__getArray()[i + 1] = this.values[i]
+      this.heap._array[i + 1] = this.values[i]
     }
     this.heap.__setSize(this.values.length)
   })
@@ -23,7 +23,7 @@ describe('The min heap class', () => {
     let heap = this.heap
     for (let i = 2; i < heap.getSize(); i++) {
       let largestChild = heap.largestChild(Math.floor(i / 2))
-      expect(this.heap.__getArray()[largestChild]).to.be.greaterThanOrEqual(this.heap.__getArray()[i])
+      expect(this.heap._array[largestChild]).to.be.greaterThanOrEqual(this.heap._array[i])
     }
   })
 
@@ -32,11 +32,11 @@ describe('The min heap class', () => {
     let values = this.values.toSorted()
 
     while (heap.getSize() > 1) {
-      expect(isHeapShaped(heap.__getArray(), heap.getSize())).to.be.true
-      expect(heap.__getArray().slice(1, heap.getSize() + 1).toSorted()).to.deep.equal(values)
+      expect(isHeapShaped(heap._array, heap.getSize())).to.be.true
+      expect(heap._array.slice(1, heap.getSize() + 1).toSorted()).to.deep.equal(values)
 
-      heap.__getArray()[1] = heap.__getArray()[heap.getSize()]
-      values = heap.__getArray().slice(1, heap.getSize()).toSorted()
+      heap._array[1] = heap._array[heap.getSize()]
+      values = heap._array.slice(1, heap.getSize()).toSorted()
       heap.__setSize(heap.getSize() - 1)
       heap.sink(1)
     }
@@ -47,10 +47,10 @@ describe('The min heap class', () => {
     let values = this.values.toSorted()
 
     for (let i = 0; i < values.length; i++) {
-      expect(isHeapShaped(heap.__getArray(), heap.getSize())).to.be.true
-      expect(heap.__getArray().slice(1).toSorted()).to.deep.equal(values.slice(0, i).toSorted())
+      expect(isHeapShaped(heap._array, heap.getSize())).to.be.true
+      expect(heap._array.slice(1).toSorted()).to.deep.equal(values.slice(0, i).toSorted())
 
-      heap.__getArray()[i + 1] = values[i]
+      heap._array[i + 1] = values[i]
       heap.rise(i + 1)
       heap.__setSize(heap.getSize() + 1)
     }
@@ -61,7 +61,7 @@ describe('The min heap class', () => {
     let heap = new MaxHeap()
 
     for (let i = 0; i < numbers.length; i++) {
-      expect(isHeapShaped(heap.__getArray(), i)).to.be.true
+      expect(isHeapShaped(heap._array, i)).to.be.true
       heap.add(numbers[i])
     }
   })
@@ -70,7 +70,7 @@ describe('The min heap class', () => {
     let values = this.values.toSorted((a, b) => a - b).reverse()
 
     for (let i = 0; i < values.length; i++) {
-      expect(isHeapShaped(this.heap.__getArray(), values.length - i)).to.be.true
+      expect(isHeapShaped(this.heap._array, values.length - i)).to.be.true
 
       let value = this.heap.get()
       expect(value).to.equal(values[i])
