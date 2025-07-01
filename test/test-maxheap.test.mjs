@@ -40,4 +40,18 @@ describe('The min heap class', () => {
       heap.sink(1)
     }
   })
+
+  it('Should rise values into the correct spot', function() {
+    let heap = new MaxHeap()
+    let values = this.values.toSorted()
+
+    for (let i = 0; i < values.length; i++) {
+      expect(isHeapShaped(heap.__getArray(), heap.getSize())).to.be.true
+      expect(heap.__getArray().slice(1).toSorted()).to.deep.equal(values.slice(0, i).toSorted())
+
+      heap.__getArray()[i + 1] = values[i]
+      heap.rise(i + 1)
+      heap.__setSize(heap.getSize() + 1)
+    }
+  })
 })
