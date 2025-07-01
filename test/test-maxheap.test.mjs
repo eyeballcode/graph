@@ -2,6 +2,7 @@ import { expect } from 'chai'
 import MaxHeap from '../lib/MaxHeap.mjs'
 
 function isHeapShaped(array, size) {
+  if (array.length < size) return false
   for (let i = 2; i < size + 1; i++) {
     if (array[i] > array[Math.floor(i / 2)]) return false
   }
@@ -52,6 +53,16 @@ describe('The min heap class', () => {
       heap.__getArray()[i + 1] = values[i]
       heap.rise(i + 1)
       heap.__setSize(heap.getSize() + 1)
+    }
+  })
+
+  it('Should add numbers while preserving the heap invariant', function() {
+    let numbers = [12, 52, 2, 55, 9, 1, 0, 42, 67, 99, 3, 4, 5]
+    let heap = new MaxHeap()
+
+    for (let i = 0; i < numbers.length; i++) {
+      expect(isHeapShaped(heap.__getArray(), i)).to.be.true
+      heap.add(numbers[i])
     }
   })
 })
