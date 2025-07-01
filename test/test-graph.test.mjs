@@ -16,6 +16,6 @@ describe('The graph class', () => {
     let vertex = new Vertex('A')
     graph.add(vertex)
 
-    expect(graph.getVertex('A')).to.equal(vertex)
+    expect(graph.get('A')).to.equal(vertex)
   })
 })
