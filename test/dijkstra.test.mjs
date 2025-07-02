@@ -22,15 +22,15 @@ describe('Dijkstra', () => {
 
     let { dist, pred } = dijkstra(graph, 6)
     let expectedDist = [3, 13, 22, 7, 14, 6, 0, 4, 5, 6, 18]
-    let expectedPred = [6, 0, 3, 8, 5, 6, null, 6, 7, 8, 1]
+    let expectedPred = [6, 0, 3, 8, 5, 6, null, 6, 7, 8, 1].map(vertex => vertex !== null ? graph.get(vertex) : null)
 
-    expect(dist).to.deep.equal(expectedDist.reduce((acc, i) => {
-      acc[i] = expectedDist[i]
+    expect(dist).to.deep.equal(expectedDist.reduce((acc, e, i) => {
+      acc[i] = e
       return acc
     }, {}))
 
-    expect(pred).to.deep.equal(expectedPred.reduce((acc, i) => {
-      acc[i] = expectedPred[i]
+    expect(pred).to.deep.equal(expectedPred.reduce((acc, e, i) => {
+      acc[i] = e
       return acc
     }, {}))
   })
