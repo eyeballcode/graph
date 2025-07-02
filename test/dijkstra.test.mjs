@@ -52,8 +52,8 @@ describe('Dijkstra', () => {
     }
 
     let { dist, pred } = dijkstra(graph, 6, 8)
-    let expectedDist = [3, null, null, null, null, 6, 0, 4, 5, null, null]
-    let expectedPred = [6, null, null, null, null, 6, null, 6, 7, null, null].map(vertex => vertex !== null ? graph.get(vertex) : null)
+    let expectedDist = [3, 13, Infinity, Infinity, Infinity, 6, 0, 4, 5, Infinity, Infinity]
+    let expectedPred = [6, 0, null, null, null, 6, null, 6, 7, null, null].map(vertex => vertex !== null ? graph.get(vertex) : null)
 
     expect(dist).to.deep.equal(expectedDist.reduce((acc, e, i) => {
       acc[i] = e
