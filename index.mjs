@@ -6,7 +6,7 @@ import Edge from './lib/Edge.mjs';
 import Vertex from './lib/Vertex.mjs';
 import Graph from './lib/Graph.mjs';
 
-export default {
+export {
   Heap,
   MinHeap,
   MaxHeap,
