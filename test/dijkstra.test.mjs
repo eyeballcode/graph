@@ -85,9 +85,9 @@ describe('Path reconstruction', () => {
     }
 
     let { dist, pred } = dijkstra(graph, 6)
-    let path = backtrack(pred, 3)
+    let path = backtrack(graph, pred, 3)
 
     let expectedSteps = [6, 7, 8, 3].map(vertex => graph.get(vertex))
-    expect(path).to.equal(expectedSteps)
+    expect(path).to.deep.equal(expectedSteps)
   })
 })
